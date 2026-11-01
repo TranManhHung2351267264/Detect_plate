@@ -1,0 +1,10 @@
+The VNLP dataset is composed of around 37,300 images. Most of the images have been taken at a Transportation
+Registration Center in Vietnam. The dataset is divided into two collections with respect to the LP shape type: one-row subset (19,086 images) and two-row subset (18,211 images).
+
+
+Each image's filename consists of sub-strings (saparated by '_' symbol), encoding the following information (e.g: 1_3_0_14B01180_153_314_207_366.jpg):
+- The first three substrings: are not relevant (e.g: 1_3_0).
+- The chacracters of LP: here for example '14B01180'.
+- Location of LP bounding box (left-top and width-height, coresspondingly): 153_314_207_366 => left-top = (153,314), width-height = (207, 366).
+
+If you need more information, please contact: phamtheanh@hdu.edu.vn

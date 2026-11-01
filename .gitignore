@@ -20,8 +20,6 @@ htmlcov/
 /CNN_threshold/
 /KNN/
 /SVM/
-/data/*
-!/data/ocr_groups.example.csv
 /VNLP_detection/
 /datasets/
 
