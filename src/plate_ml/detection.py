@@ -24,6 +24,16 @@ class PlateDetector:
                 raise FileNotFoundError(path)
             self.cascade = cv2.CascadeClassifier(str(path))
             if self.cascade.empty():
+                import tempfile, hashlib
+                temp_dir = Path(tempfile.gettempdir()) / "plate_ml_cascades"
+                temp_dir.mkdir(parents=True, exist_ok=True)
+                xml_data = path.read_bytes()
+                hex_hash = hashlib.md5(xml_data).hexdigest()[:12]
+                temp_path = temp_dir / f"{hex_hash}_{path.name}"
+                if not temp_path.exists() or temp_path.stat().st_size != len(xml_data):
+                    temp_path.write_bytes(xml_data)
+                self.cascade = cv2.CascadeClassifier(str(temp_path))
+            if self.cascade.empty():
                 raise ValueError(f"Invalid Haar cascade: {path}")
 
     def detect(self, image: np.ndarray) -> DetectionResult:
